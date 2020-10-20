@@ -1,17 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-<<<<<<< HEAD
   favoriter: one
   favoritee: one
 
 two:
   favoriter: two
-=======
-  favorater: one
-  favoritee: one
-
-two:
-  favorater: two
->>>>>>> f4988944379666d8a73211cc911ee0528ff79152
   favoritee: two
