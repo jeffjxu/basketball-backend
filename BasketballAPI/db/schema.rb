@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_10_20_035901) do
 
   create_table "favorites", force: :cascade do |t|
@@ -19,6 +20,17 @@ ActiveRecord::Schema.define(version: 2020_10_20_035901) do
     t.datetime "updated_at", null: false
     t.index ["favoritee_id"], name: "index_favorites_on_favoritee_id"
     t.index ["favoriter_id"], name: "index_favorites_on_favoriter_id"
+=======
+ActiveRecord::Schema.define(version: 2020_10_20_035526) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "favorater_id"
+    t.integer "favoritee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favorater_id"], name: "index_favorites_on_favorater_id"
+    t.index ["favoritee_id"], name: "index_favorites_on_favoritee_id"
+>>>>>>> f4988944379666d8a73211cc911ee0528ff79152
   end
 
   create_table "games", force: :cascade do |t|
