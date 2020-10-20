@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2020-10-19
+  time: 2020-10-19 23:52:21
+  description: MyText
+  private: false
+  longitude: 1.5
+  latitude: 1.5
+
+two:
+  name: MyString
+  date: 2020-10-19
+  time: 2020-10-19 23:52:21
+  description: MyText
+  private: false
+  longitude: 1.5
+  latitude: 1.5
