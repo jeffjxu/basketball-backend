@@ -33,4 +33,6 @@ jobs:
         bundle update --bundler
         bundle install --jobs 4 --retry 3
     - name: Run tests
-      run: rails test
+      run: |
+        cd BasketballAPI
+        rails test
