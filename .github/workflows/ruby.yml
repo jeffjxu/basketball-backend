@@ -29,6 +29,7 @@ jobs:
         ruby-version: 2.5.7
     - name: Install dependencies
       run: |
+        cd BasketballAPI
         gem install bundler
         bundle install --jobs 4 --retry 3
     - name: Run tests
