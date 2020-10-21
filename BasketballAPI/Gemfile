@@ -22,6 +22,15 @@ gem 'puma', '~> 3.11'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# For handling date validation
+gem 'validates_timeliness', '4.0.2'
+
+# For serializing models to json for the API
+gem 'active_model_serializers', '0.10.7'
+
+# For generating the swagger docs to document the API
+gem 'swagger-docs', '0.2.9'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -31,6 +40,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
+  gem 'minitest-reporters'
 end
 
 group :development do
@@ -38,6 +50,16 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'shoulda', '>= 2.11.3'
+  gem 'shoulda-matchers', '>= 3.1.2'
+  gem 'factory_bot_rails', '>= 4.8.2'
+  gem 'simplecov', '>= 0.16.1'
+  gem 'cucumber-rails', '>= 1.5.0', require: false
+  gem 'database_cleaner', '>= 1.6.2'
+  gem 'launchy', '>= 2.4.3'
 end
 
 
