@@ -27,7 +27,7 @@ FactoryBot.define do
   end
 
   factory :favorite do
-    association :user
-    association :user
+    association :favoriter_id
+    association :favoritee_id
   end
 end
