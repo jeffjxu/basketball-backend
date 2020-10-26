@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
     username { "michaeljordan" }
-    password { "secret" }
-    password_confirmation { "secret" }
+    password { "secret123" }
+    password_confirmation { "secret123" }
     email { "michaeljordan@gmail.com" }
     firstname { "Michael" }
     lastname { "Jordan" }
@@ -27,7 +27,7 @@ FactoryBot.define do
   end
 
   factory :favorite do
-    association :user
-    association :user
+    association :favoriter
+    association :favoritee
   end
 end
