@@ -14,6 +14,7 @@ class Game < ApplicationRecord
     scope :public_games, -> { where(private: false) }
     scope :private_games, -> { where(private: true) }
     scope :in_date_range, -> (start_date, end_date) { where('date BETWEEN ? AND ?', start_date, end_date) }
+    scope :upcoming, -> { where('date >= ?', Date.today) }
     # TODO: get games within a certain distance from given coordinate
     scope :chronological, lambda { order('date ASC, time ASC') }
 

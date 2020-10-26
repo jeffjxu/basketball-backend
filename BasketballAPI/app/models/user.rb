@@ -18,6 +18,7 @@ class User < ApplicationRecord
   # Scopes
   scope :alphabetical_username, -> { order('username') }
   scope :alphabetical_name, -> { order('lastname, firstname') }
+  scope :favorites, -> { joins(:favorites )}
 
   # Methods
   def games
