@@ -11,5 +11,4 @@ class Favorite < ApplicationRecord
   scope :for_favoriter, -> (favoriter_id) { where('favoriter_id = ?', favoriter_id) }
   scope :for_favoritee, -> (favoritee_id) { where('favoritee_id = ?', favoritee_id) }
 
-
 end
