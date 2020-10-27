@@ -1,7 +1,8 @@
 class PlayerSerializer
   include FastJsonapi::ObjectSerializer
+  attributes :id, :status
 
-  attributes :user do |object|
-    object.user
+  attribute :game do |object|
+    GamesSerializer.new(object.game).serializable_hash
   end
 end

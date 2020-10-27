@@ -1,18 +1,20 @@
 class UserSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :username, :email, :first_name, :last_name, :dob, :phone
+  attributes :id, :username, :email, :firstname, :lastname, :dob, :phone
 
-  attributes :games do |object|
-    object.games.upcoming do |game|
-      GameSerializer.new(game).serializable_hash
+  attribute :players do |object|
+    object.players.map do |player|
+      PlayerSerializer.new(player).serializable_hash
     end
   end
 
-  attributes :favorites do |object|
-    Favorite.for_favoriter(object.id).user
+  attribute :favorites do |object|
+    Favorite.for_favoriter(object.id).map do |favorite|
+      FavoriteSerializer.new(favorite).serializable_hash
+    end
   end
 
-  attributes :favoritees do |object|
-    Favorite.for_favoritee(object.id).user
-  end
+  # attributes :favoritees do |object|
+  #   Favorite.for_favoritee(object.id).user
+  # end
 end
