@@ -35,4 +35,6 @@ jobs:
     - name: Run tests
       run: |
         cd BasketballAPI
+        rails db:setup
+        rails db:migrate
         rails test
