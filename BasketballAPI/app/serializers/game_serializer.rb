@@ -1,22 +1,22 @@
 class GameSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :date, :time, :description, :private, :longitude, :latitude
+  attributes :id, :name, :date, :time, :description, :private, :longitude, :latitude
 
-  attributes :invited do |object|
-    object.players.invited do |player|
-      PlayerSerializer.new(player).serializable_hash
+  attribute :invited do |object|
+    object.players.invited.alphabetical.map do |player|
+      UsersSerializer.new(player.user).serializable_hash
     end
   end
 
-  attributes :maybe do |object|
-    object.players.maybe do |player|
-      PlayerSerializer.new(player).serializable_hash
+  attribute :maybe do |object|
+    object.players.maybe.alphabetical.map do |player|
+      UsersSerializer.new(player.user).serializable_hash
     end
   end
 
-  attributes :going do |object|
-    object.players.going do |player|
-      PlayerSerializer.new(player).serializable_hash
+  attribute :going do |object|
+    object.players.going.alphabetical.map do |player|
+      UsersSerializer.new(player.user).serializable_hash
     end
   end
 end
