@@ -32,6 +32,8 @@ jobs:
         cd BasketballAPI
         bundle update --bundler
         bundle install --jobs 4 --retry 3
+        sudo apt-get -y install postgresql
+        gem install pg
     - name: Run tests
       run: |
         cd BasketballAPI
