@@ -14,6 +14,6 @@ To make change to this app, clone the repository, then run `BasketballAPI` and `
 
 ## Deployment
 
-To check the status of the deployment, check the Github Actions workflows at [https://github.com/jeffjxu/basketball-backend/actions](https://github.com/jeffjxu/basketball-backend/actions).
+The app is deployed to [secure-hollows-77457.herokuapp.com](secure-hollows-77457.herokuapp.com)
 
-The Github Actions workflow will run the tests defined in `BasketballAPI/test`
+List all users at [secure-hollows-77457.herokuapp.com/users](secure-hollows-77457.herokuapp.com/users)
