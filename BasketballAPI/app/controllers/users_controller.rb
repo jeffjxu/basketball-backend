@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-
   before_action :set_user, only: [:show, :update, :destroy]
 
   def index
     @users = User.all
-    render json: @users
+    render json: UsersSerializer.new(@users).serialized_json
   end
 
   def create
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user
+    render json: UserSerializer.new(@user).serialized_json
   end
 
   def update
@@ -36,6 +35,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end

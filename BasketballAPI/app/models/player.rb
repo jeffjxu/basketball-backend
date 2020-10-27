@@ -13,4 +13,6 @@ class Player < ApplicationRecord
   scope :maybe, -> { where(status: 'maybe') }
   scope :for_game, -> (game_id) { where('game_id = ?', game_id) }
   scope :for_user, -> (user_id) { where('user_id = ?', user_id) }
+  scope :alphabetical, ->  { joins(:user).order('firstname, lastname') }
+
 end

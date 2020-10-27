@@ -18,10 +18,9 @@ class User < ApplicationRecord
   # Scopes
   scope :alphabetical_username, -> { order('username') }
   scope :alphabetical_name, -> { order('lastname, firstname') }
-  scope :favorites, -> { joins(:favorites )}
+  # scope :favorites, -> { joins(:favorites ) }
 
-  # Methods
   def games
-    self.players.map{ |p| Game.find(p.game_id) }.sort_by { |g| [g.date, g.time] }
+    self.players.map{ |p| Game.upcoming.chronological.find(p.game_id) }.sort_by { |g| [g.date, g.time] }
   end
 end
