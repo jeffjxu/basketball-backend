@@ -13,7 +13,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
-      render json: @game
+      render json: GameSerializer.new(@game).serialized_json
     else
       render json: @game.errors, status: :unprocessable_entity
     end
@@ -21,7 +21,7 @@ class GamesController < ApplicationController
 
   def update
     if @game.update(game_params)
-      render json: @game
+      render json: GameSerializer.new(@game).serialized_json
     else
       render json: @game.errors, status: :unprocessable_entity
     end

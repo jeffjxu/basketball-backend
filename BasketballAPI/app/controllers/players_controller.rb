@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if @player.save
-      render json: @player
+      render json: PlayerSerializer.new(@player).serialized_json
     else
       render json: @player.errors, status: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class PlayersController < ApplicationController
 
   def update
     if @player.update_attributes(player_params)
-      render json: @player
+      render json: PlayerSerializer.new(@player).serialized_json
     else
       render json: @player.errors, status: :unprocessable_entity
     end
