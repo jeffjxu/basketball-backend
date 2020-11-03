@@ -18,7 +18,7 @@ class User < ApplicationRecord
   # Scopes
   scope :alphabetical_username, -> { order('username') }
   scope :alphabetical_name, -> { order('lastname, firstname') }
-  # scope :favorites, -> { joins(:favorites ) }
+  scope :search, ->(term) { where('LOWER( firstname ) LIKE ? OR LOWER( lastname ) LIKE ? OR LOWER( username ) LIKE ?', "#{term}%", "#{term}%", "#{term}%") }
 
   def games
     self.players.map{ |p| Game.upcoming.chronological.find(p.game_id) }.sort_by { |g| [g.date, g.time] }

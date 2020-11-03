@@ -60,5 +60,10 @@ class UserTest < ActiveSupport::TestCase
       destroy_players
       destroy_games
     end
+
+    should "search for player by firstname, lastname, or username" do
+      assert_equal ["kobebryant"], User.search("kobe").map{ |u| u.username }
+      assert_equal ["lebronjames", "michaeljordan"], User.search("j").map{ |u| u.username }.sort
+    end
   end
 end
