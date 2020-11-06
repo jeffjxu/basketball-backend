@@ -24,6 +24,8 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     if !@favorite.destroyed?
       render json: @favorite.errors, status: :unprocessable_entity
+    else
+      render json: @favorite
     end
   end
 
