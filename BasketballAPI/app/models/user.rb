@@ -21,6 +21,6 @@ class User < ApplicationRecord
   scope :search, ->(term) { where('LOWER( firstname ) LIKE ? OR LOWER( lastname ) LIKE ? OR LOWER( username ) LIKE ?', "#{term}%", "#{term}%", "#{term}%") }
 
   def games
-    self.players.map{ |p| Game.upcoming.chronological.find(p.game_id) }.sort_by { |g| [g.date, g.time] }
+    self.players.map{ |p| Game.chronological.find(p.game_id) }.sort_by { |g| [g.date, g.time] }
   end
 end
