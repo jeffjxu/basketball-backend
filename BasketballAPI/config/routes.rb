@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :games
   resources :players
   resources :favorites
+
+  get 'users/:id/games', to: 'users#games', as: :user_games
 end
