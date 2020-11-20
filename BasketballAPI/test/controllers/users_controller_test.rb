@@ -26,11 +26,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get user_path(@user)
     assert_response :success
   end
-
-  test "should destroy owner" do
-    assert_difference('User.count', -1) do
-      delete user_path(@user)
-      assert_response :success
-    end
-  end
 end

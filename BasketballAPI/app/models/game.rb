@@ -17,5 +17,5 @@ class Game < ApplicationRecord
     scope :upcoming, -> { where('date >= ?', Date.today) }
     # TODO: get games within a certain distance from given coordinate
     scope :chronological, lambda { order('date ASC, time ASC') }
-
+    scope :for_user, -> (user_id) { joins(:player).where("player.user_id = ?", user_id) }
 end

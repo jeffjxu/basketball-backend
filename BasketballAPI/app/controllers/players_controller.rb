@@ -32,6 +32,8 @@ class PlayersController < ApplicationController
     @player.destroy
     if !@player.destroyed?
       render json: @player.errors, status: :unprocessable_entity
+    else
+      render json: PlayerSerializer.new(@player).serialized_json
     end
   end
 

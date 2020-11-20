@@ -11,6 +11,7 @@ class PlayerTest < ActiveSupport::TestCase
   should validate_presence_of(:user_id)
   should validate_presence_of(:game_id)
   should validate_presence_of(:status)
+  should validate_uniqueness_of(:user_id).scoped_to(:game_id)
 
   # Status validation
   should allow_value("invited").for(:status)

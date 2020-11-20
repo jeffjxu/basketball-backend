@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :games]
 
   def index
     @users = User.all
@@ -27,15 +27,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user.destroy
-    if !@user.destroyed?
-      render json: @user.errors, status: :unprocessable_entity
-    end
+  def games
+    @games = @user.games
+    render json: GamesSerializer.new(@games).serialized_json
   end
 
   private
-
   def set_user
     @user = User.find(params[:id])
   end
