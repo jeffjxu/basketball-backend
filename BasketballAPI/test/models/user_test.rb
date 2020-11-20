@@ -61,9 +61,9 @@ class UserTest < ActiveSupport::TestCase
       destroy_games
     end
 
-    should "search for player by firstname, lastname, or username" do
-      assert_equal ["kobebryant"], User.search("kobe").map{ |u| u.username }
-      assert_equal ["lebronjames", "michaeljordan"], User.search("j").map{ |u| u.username }.sort
-    end
+    # should "allow user to authenticate with password" do
+    #   assert_equal @user1.authenticate("secret")
+    #   deny @user1.authenticate("notsecret")
+    # end
   end
 end
