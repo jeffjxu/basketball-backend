@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   resources :games
   resources :players
   resources :favorites
+
+  get :token, controller: 'application'
+  get :authenticate_with_token, controller: 'application'
 end

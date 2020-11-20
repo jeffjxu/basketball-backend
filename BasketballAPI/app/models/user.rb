@@ -23,4 +23,18 @@ class User < ApplicationRecord
   def games
     self.players.map{ |p| Game.upcoming.chronological.find(p.game_id) }.sort_by { |g| [g.date, g.time] }
   end
+
+  # login by username
+  def self.authenticate(username, password)
+    find_by_username(username).try(:authenticate, password)
+  end
+
+  # callback that generates the API key
+  before_create :generate_api_key
+
+  def generate_api_key
+    begin
+      self.api_key = SecureRandom.hex
+    end while User.exists?(api_key: self.api_key)
+  end
 end

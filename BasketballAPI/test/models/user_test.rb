@@ -60,5 +60,10 @@ class UserTest < ActiveSupport::TestCase
       destroy_players
       destroy_games
     end
+
+    # should "allow user to authenticate with password" do
+    #   assert_equal @user1.authenticate("secret")
+    #   deny @user1.authenticate("notsecret")
+    # end
   end
 end
