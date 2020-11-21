@@ -15,7 +15,6 @@ class ApplicationController < ActionController::API
 
   # before_action :authenticate_with_token, except: [:token, :users]
 
-  
   # A method to handle initial authentication
   def token
     authenticate_username_password || render_unauthorized
@@ -42,6 +41,12 @@ class ApplicationController < ActionController::API
 
   def render_unauthorized(realm = "Application")
     self.headers["WWW-Authenticate"] = %(Token realm="#{realm.gsub(/"/, "")}")
-    render json: {error: "Bad Credentials"}, status: :unauthorized
+    render json: { error: "Bad Credentials" }, status: :unauthorized
+  end
+
+  def search
+    @query = params[:query]
+    @users = User.search(@query).alphabetical_name
+    render json: UsersSerializer.new(@users).serialized_json
   end
 end

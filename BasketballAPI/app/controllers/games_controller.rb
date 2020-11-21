@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :update]
 
   def index
-    @games = Game.all
+    @games = Game.chronological
     render json: GamesSerializer.new(@games).serialized_json
   end
 
