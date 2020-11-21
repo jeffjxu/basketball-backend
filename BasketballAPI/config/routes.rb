@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get 'users/:id/games', to: 'users#games', as: :user_games
   get 'application/search', to: 'application#search', as: :search
 
+  post :create_user, controller: 'application'
 end
