@@ -13,8 +13,9 @@ class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  before_action :authenticate_with_token, except: [:token]
+  # before_action :authenticate_with_token, except: [:token, :users]
 
+  
   # A method to handle initial authentication
   def token
     authenticate_username_password || render_unauthorized
