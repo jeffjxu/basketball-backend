@@ -10,5 +10,7 @@ class Favorite < ApplicationRecord
   # Scopes
   scope :for_favoriter, -> (favoriter_id) { where('favoriter_id = ?', favoriter_id) }
   scope :for_favoritee, -> (favoritee_id) { where('favoritee_id = ?', favoritee_id) }
+  scope :alphabetical_favoritee, ->  { joins(:favoritee).order('firstname, lastname') }
+  scope :alphabetical_favoriter, ->  { joins(:favoriter).order('firstname, lastname') }
 
 end
