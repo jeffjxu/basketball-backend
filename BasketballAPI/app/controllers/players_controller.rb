@@ -37,6 +37,16 @@ class PlayersController < ApplicationController
     end
   end
 
+  def for_user
+    @players = Player.for_user(params[:user_id])
+    render json: PlayerSerializer.new(@players).serialized_json
+  end
+
+  def for_game
+    @players = Player.for_game(params[:game_id])
+    render json: PlayerSerializer.new(@players).serialized_json
+  end
+
   private
   def set_player
     @player = Player.find(params[:id])
