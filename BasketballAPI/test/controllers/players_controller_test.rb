@@ -28,4 +28,14 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
   end
+
+  test "should have for_user path" do
+    get players_for_user_path
+    assert_response :success
+  end
+
+  test "should have for_game path" do
+    get players_for_game_path
+    assert_response :success
+  end
 end

@@ -2,7 +2,8 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = FactoryBot.create(:user, username: "michaeljordan", email: "michaeljordan@gmail.com", firstname: "Michael", lastname: "Jordan", dob: 10.years.ago.to_date)
+    @user = FactoryBot.create(:user, username: "michaeljordan", email: "michaeljordan@gmail.com", firstname: "Michael", lastname: "Jordan", dob: 10.years.ago.to_date, password: "secret", password_confirmation: "secret")
+    get token_path, params: { username: "michaeljordan", password: "secret" }
   end
 
   test "should get index" do

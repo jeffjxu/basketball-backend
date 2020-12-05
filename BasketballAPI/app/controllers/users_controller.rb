@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy, :games]
 
   def index
-    @users = User.all
+    @users = User.alphabetical_name
     render json: UsersSerializer.new(@users).serialized_json
   end
 

@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   before_action :set_favorite, only: [:show, :destroy]
 
   def index
-    @favorites = Favorite.all
+    @favorites = Favorite.alphabetical_favoriter
     render json: FavoriteSerializer.new(@favorites).serialized_json
   end
 

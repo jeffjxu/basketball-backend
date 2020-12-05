@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :update, :destroy]
 
   def index
-    @players = Player.all
+    @players = Player.chronological
     render json: PlayerSerializer.new(@players).serialized_json
   end
 
@@ -35,6 +35,16 @@ class PlayersController < ApplicationController
     else
       render json: PlayerSerializer.new(@player).serialized_json
     end
+  end
+
+  def for_user
+    @players = Player.for_user(params[:user_id])
+    render json: PlayerSerializer.new(@players).serialized_json
+  end
+
+  def for_game
+    @players = Player.for_game(params[:game_id])
+    render json: PlayerSerializer.new(@players).serialized_json
   end
 
   private
