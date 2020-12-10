@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get :authenticate_with_token, controller: 'application'
   get 'users/:id/games', to: 'users#games', as: :user_games
   get 'search', to: 'application#search', as: :search
+  get 'get_games', to: 'application#get_games', as: :get_games
 
   post :create_user, controller: 'application'
 end

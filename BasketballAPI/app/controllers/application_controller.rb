@@ -61,6 +61,13 @@ class ApplicationController < ActionController::API
     render json: UsersSerializer.new(@users).serialized_json
   end
 
+  def get_games
+    @user_id = params[:user_id]
+    public_games = Game.public_games
+    private_games = Game.private_games.for_user(@user_id)
+    render json: GamesSerializer.new(public_games + private_games).serialized_json
+  end
+
   private
   def user_params
     params.permit(:firstname, :lastname, :email, :username, :dob, :phone, :password, :password_confirmation)
