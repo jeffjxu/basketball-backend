@@ -63,8 +63,8 @@ class ApplicationController < ActionController::API
 
   def get_games
     @user_id = params[:user_id]
-    public_games = Game.public_games
-    private_games = Game.private_games.for_user(@user_id)
+    public_games = Game.public_games.upcoming
+    private_games = Game.private_games.upcoming.for_user(@user_id)
     render json: GamesSerializer.new(public_games + private_games).serialized_json
   end
 

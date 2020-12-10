@@ -3,7 +3,7 @@ class UserSerializer
   attributes :id, :username, :email, :firstname, :lastname, :dob, :phone
 
   attribute :players do |object|
-    object.players.chronological.map do |player|
+    object.players.upcoming.chronological.map do |player|
       PlayerSerializer.new(player).serializable_hash
     end
   end

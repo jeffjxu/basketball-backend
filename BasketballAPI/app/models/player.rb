@@ -15,6 +15,7 @@ class Player < ApplicationRecord
   scope :not_going, -> { where(status: 'not_going') }
   scope :for_game, -> (game_id) { where('game_id = ?', game_id) }
   scope :for_user, -> (user_id) { where('user_id = ?', user_id) }
+  scope :upcoming, ->  { joins(:game).where('date >= ?', Date.current) }
   scope :alphabetical, ->  { joins(:user).order('firstname, lastname') }
   scope :chronological, ->  { joins(:game).order('date ASC, time ASC') }
 
