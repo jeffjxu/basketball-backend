@@ -27,6 +27,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    if !@user.destroyed?
+      render json: @user.errors, status: :unprocessable_entity
+    else
+      render json: UserSerializer.new(@user).serialized_json
+    end
+  end
+
   def games
     @games = @user.games
     render json: GamesSerializer.new(@games).serialized_json
